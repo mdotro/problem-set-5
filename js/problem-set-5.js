@@ -189,32 +189,31 @@ function hurricane() {
   ///////////////// DO NOT MODIFY
   let windspeed; // DO NOT MODIFY
   ///////////////// DO NOT MODIFY
-windspeed=Number(prompt('enter your windspeed'));
-  if (windspeed>=157){
+do {
+    windspeed = prompt('Please enter a windspeed between 1 and 1000');
+    windspeed = Number(windspeed);
+  } while (windspeed < 1 || windspeed > 1000 || Number.isNaN(windspeed) || !Number.isInteger(windspeed));
+
+  if (windspeed >= 157) {
     document.getElementById('hurricane-output').innerHTML='Category 5 Hurricane.';
-  }
-  else if (windspeed>=130){
+  } else if (windspeed >= 130) {
     document.getElementById('hurricane-output').innerHTML='Category 4 Hurricane.';
-  }
-  else if (windspeed>=111){
+  } else if (windspeed >= 111) {
     document.getElementById('hurricane-output').innerHTML='Category 3 Hurricane.';
-  }
-  else if (windspeed>=96){
+  } else if (windspeed >= 96) {
     document.getElementById('hurricane-output').innerHTML='Category 2 Hurricane.';
-  }
-  else if (windspeed>=74){
+  } else if (windspeed >= 74) {
     document.getElementById('hurricane-output').innerHTML='Category 1 Hurricane.';
-  }
-  else if (windspeed>=39){
+  } else if (windspeed >= 39) {
     document.getElementById('hurricane-output').innerHTML='Tropical Storm.';
-  }
-  else if (windspeed<=38){
+  } else if (windspeed <= 38) {
     document.getElementById('hurricane-output').innerHTML='The skies are calm...';
   }
+	
   ///////////////////////////////// DO NOT MODIFY
   check('hurricane', windspeed); // DO NOT MODIFY
   ///////////////////////////////// DO NOT MODIFY
-
+}
 
 /*
  * Gymnastics. 5 points.
@@ -305,43 +304,45 @@ function reportCard() {
    *       representative of the number of tests, quizzes, and homework
    *       grades the user enters, respectively.
    */
+ let testsInput = prompt("Please enter your test score");
+   if (testsInput == -1) {
+   	}
 
-		let testsInput=prompt("Enter your test score");
-		if(testsInput==-1){
-			break;
-		}
-		if(Number(testsInput)>=0 && Number(testsInput<=100)){
-			testTotal=Number(testsInput)+testTotal;
-			tests++;
-		}
-	
-	}
-	while(true){
-		let quizInput=prompt("Enter your quiz score");
-		if (quizInput==-1){
-			break;
-		}
-		if(Number(quizInput)>=0 && Number(quizInput)<=100){
-			quizTotal=Number(quizInput)+quizTotal;
-			quizzes++;
-		}
-	}
-	while(true){
-		let homeworkInput=prompt("Enter your homework score");
-		if (homeworkInput==-1){
-			break;
-		}
-		if(Number(homeworkInput)>=0 && Number(homeworkInput)<=100){
-			homeworkTotal=Number(homeworkInput)+homeworkTotal;
-			homeworks++;
-		}
-	}
-	let testAverage=(testTotal/tests).toFixed(2);
-	let quizAverage=(quizTotal/quizzes).toFixed(2);
-	let homeworksAverage=(homeworkTotal/homeworks).toFixed(2);
-	grade=(.6*testAverage+.3*quizAverage+.1*homeworksAverage).toFixed(2);
-	document.getElementById("report-card-output").innerHTML="Tests: "+testAverage+"</br>Quizzes: "+quizAverage+"</br>Homework: "+homeworksAverage+"</br>Grade: "+grade;
-  /////////////////////// DO NOT MODIFY
+   if (Number(testsInput) >= 0 && Number(testsInput <= 100)) {
+   		testTotal = Number(testsInput) + testTotal;
+   		tests++;
+   }
+
+   while (true) {
+     let quizInput=prompt("Please enter your quiz score");
+     if (quizInput == -1){
+     }
+
+     if (Number(quizInput) >= 0 && Number(quizInput) <= 100) {
+       quizTotal = Number(quizInput) + quizTotal;
+       quizzes++;
+   		}
+    }
+
+    while (true) {
+      let homeworkInput = prompt("Please enter your homework score");
+      if (homeworkInput == -1){
+   		}
+
+      if (Number(homeworkInput) >= 0 && Number(homeworkInput) <= 100) {
+        homeworkTotal = Number(homeworkInput) + homeworkTotal;
+   			homeworks++;
+   		}
+   	}
+
+   	let testAverage = (testTotal / tests).toFixed(2);
+   	let quizAverage = (quizTotal / quizzes).toFixed(2);
+   	let homeworksAverage = (homeworkTotal / homeworks).toFixed(2);
+   	grade = (.6 * testAverage + .3 * quizAverage + .1 * homeworksAverage).toFixed(2);
+
+   	document.getElementById("report-card-output").innerHTML="Tests: "+testAverage+"</br>Quizzes: "+quizAverage+"</br>Homework: "+homeworksAverage+"</br>Grade: "+grade;
+
+		
   check('report-card', // DO NOT MODIFY
     testTotal, ////////// DO NOT MODIFY
     tests, ////////////// DO NOT MODIFY
