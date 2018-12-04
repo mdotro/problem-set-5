@@ -26,7 +26,30 @@ function mario() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 1 CODE HERE
+   while (true){
+    height = prompt("Please enter a height between 1 and 23");
+    height = Number(height);
+    if(height>=1 && height<=23 && Number.isInteger(height)){
+      break;
+    };
+  };
+  let m = 1;
+  let hashtag = '##';
+  let santa = "<code>";
+  let space = height-2;
+
+  while (m<=height){
+    let d ='';
+    for(let t = 0;t<=space;t++) {
+      d + ='&nbsp;';
+    }
+    space--;
+    hashtag = hashtag + '##';
+    santa = santa + d + hashtag + "</br>";
+    m++;
+  }
+  document.getElementById("mario-easy-output").innerHTML = santa;
+  santa = santa + "</code>"
 
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
@@ -61,7 +84,30 @@ function marioAgain() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 2 CODE HERE
+   while (true){
+    height = prompt("Please enter a valid height");
+    height = Number(height);
+    if(height>=1 && height<=23 && Number.isInteger(height)){
+      break;
+    };
+  };
+  let m = 1;
+  let hashtag='##';
+  let santa = "<code>";
+  let before = height-2;
+  let after = '&nbsp'+'&nbsp';
+  while (m<=height){
+    let d = '';
+    for(let f = 0;f<=before;f++) {
+      d + = '&nbsp;';
+    }
+    before--;
+    hashtag = hashtag + '##';
+    santa = santa + d + hashtag + after + hashtag + "</br>";
+    m++;
+  }
+  document.getElementById("mario-hard-output").innerHTML = santa;
+  santa = santa + "</code>"
 
   //////////////////////////////// DO NOT MODIFY
   check('mario-again', height); // DO NOT MODIFY
@@ -114,7 +160,44 @@ function credit() {
   let card; // DO NOT MODIFY
   //////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 3 CODE HERE
+  let oddNumber = 0;
+  let evenNumber = 0;
+  while (true){
+    card=prompt("Please enetr your credit card number ");
+    if ((card.length==16 || card.length==15 || card.length==13) && Number.isInteger(Number(card))){
+      break;
+    }
+  }
+  for(let m = card.length-2;m>=0;m-=2) {
+    let d = Number(card[m])*2;
+    let g = num.toString();
+    let sumNumber = 0;
+    for (let k = 0;k<g.length;k++){
+      sumNumber = sumNumber+Number(g[k]);
+    }
+    evenNumber = sumNumber+evenNumber;
+    console.log(evenNumber);
+  }
+  for(let t = card.length-1; t>=0;t-=2){
+   	oddNumber = oddNumber + Number(card[t])
+  }
+  console.log(oddNumber);
+
+  if (card.length==15 && (card[0]==3 &&(card[1]==7 || card[1]==4)) && (oddNumber+evenNumber)%10==0){
+    document.getElementById("credit-output").innerHTML="<img src ='./images/amex.png'/>";
+  }
+  else if ((card.length==13 || card.length==16) && card[0]==4 && (oddNumber+evenNumber)%10==0){
+    document.getElementById("credit-output").innerHTML="<img src ='./images/visa.png'/>";
+  }
+  else if (card.length==16 && (card[0]==5 && (card[1]==1 || card[1]==2 || card[1]==4 || card[1]==5)) && (oddNumber+evenNumber)%10==0){
+    document.getElementById("credit-output").innerHTML="<img src ='./images/mastercard.png'/>";
+  }
+  else {
+    document.getElementById("credit-output").innerHTML="<img src ='./images/invalid.png'/>";
+  }
+
+  card = Number(card);
+
 
   /*
    * NOTE: After reading in the card number and storing it in the 'card'
@@ -154,7 +237,29 @@ function credit() {
 function guess() {
 
   // WRITE YOUR EXERCISE 4 CODE HERE
-
+  let mommar = Math.floor(Math.random()*999)+1;
+  let molly = 0;
+  let maddox = false;
+  while (maddox==false) {
+    let guess=prompt("Please enter your guess")
+    if(guess> = 1 && guess<=1000 && Number.isInteger(Number(guess))){
+      console.log("1");
+      if (mommar==guess){
+        molly++;
+        maddox = true;
+        alert("This is the correct answer!")
+        document.getElementById('guess-output').innerHTML="Number: "+mommar+"</br>Attempts: "+molly;
+      }
+      else if(guess>mommar){
+        molly++;
+        alert("This value is too high!")
+      }
+      else if(guess<mommar){
+        molly++;
+        alert("This value is too low!")
+      }
+    }
+  }
   ////////////////// DO NOT MODIFY
   check('guess'); // DO NOT MODIFY
   ////////////////// DO NOT MODIFY
@@ -252,7 +357,23 @@ function gymnastics() {
    *       scores.push(firstScore);   // your variable names for your scores
    *       scores.push(secondScore);  // will likely be different than mine
    */
-
+	let m=1;
+	while(m<=6){
+		let inputScore=Number(prompt("Please enter your score"));
+		if (inputScore>=1 && inputScore<=10 && Number.isInteger(inputScore)){
+			scores.push(inputScore);
+		i++;
+		}
+	}
+	scores.sort(function(a,b){return a-b;})
+	let big = scores[5];
+	let small = scores[0];
+	let judgeScores = [];
+	for(let d=1;d<5;d++){
+		judgeScores.push(scores[d]);
+	}
+	let averageScore=((judgeScores[0]+judgeScores[1]+judgeScores[2]+judgeScores[3])/4).toFixed(2);
+	document.getElementById("gymnastics-output").innerHTML="Discarded: "+small+", "+big+"</br>Score: "+averageScore;
   /////////////////////////////// DO NOT MODIFY
   check('gymnastics', scores); // DO NOT MODIFY
   /////////////////////////////// DO NOT MODIFY
